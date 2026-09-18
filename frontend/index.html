@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Landslide Risk Intelligence</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     APP
+===================================================== -->
+
+<div class="app">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                ⚠
+            </div>
+
+            <div class="brand-text">
+                <h1>Landslide AI</h1>
+                <span>Risk Intelligence</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <p class="nav-heading">
+                MONITORING
+            </p>
+
+            <a href="#overview" class="nav-item active">
+                <span>◈</span>
+                Overview
+            </a>
+
+            <a href="#risk" class="nav-item">
+                <span>◉</span>
+                Risk Analysis
+            </a>
+
+            <a href="#environment" class="nav-item">
+                <span>◌</span>
+                Environment
+            </a>
+
+            <a href="#alerts" class="nav-item">
+                <span>!</span>
+                Alerts
+            </a>
+
+            <a href="#map" class="nav-item">
+                <span>⌖</span>
+                GIS Monitoring
+            </a>
+
+
+            <p class="nav-heading second">
+                SYSTEM
+            </p>
+
+            <div class="system-mini">
+
+                <span class="pulse"></span>
+
+                <div>
+                    <strong>Backend Online</strong>
+                    <small>FastAPI + PostgreSQL</small>
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-footer">
+
+                <span>AI EARLY WARNING</span>
+
+                <strong>NER Monitoring Network</strong>
+
+            </div>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <div class="mobile-title">
+                    Landslide AI
+                </div>
+
+                <div class="page-location">
+
+                    <span>
+                        DISASTER MANAGEMENT
+                    </span>
+
+                    <strong>
+                        Regional Monitoring Center
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="connection-status">
+
+                    <span class="connection-dot"></span>
+
+                    <div>
+                        <strong>LIVE</strong>
+                        <small>Data connected</small>
+                    </div>
+
+                </div>
+
+
+                <div class="time-box">
+
+                    <span>LOCAL TIME</span>
+
+                    <strong id="currentTime">
+                        --:--:--
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+
+        <div class="content">
+
+
+            <!-- =================================================
+                 OVERVIEW
+            ================================================== -->
+
+            <section id="overview" class="hero-section">
+
+                <div>
+
+                    <span class="section-kicker">
+                        AI-POWERED EARLY WARNING SYSTEM
+                    </span>
+
+                    <h2>
+                        Landslide Risk Intelligence Dashboard
+                    </h2>
+
+                    <p>
+                        Monitor terrain, rainfall, soil conditions,
+                        historical events and active warnings from
+                        a unified command center.
+                    </p>
+
+                </div>
+
+
+                <div class="refresh-box">
+
+                    <span>
+                        DATA REFRESH
+                    </span>
+
+                    <strong id="refreshStatus">
+                        Automatic
+                    </strong>
+
+                    <small>
+                        Every 30 seconds
+                    </small>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 KPI CARDS
+            ================================================== -->
+
+            <section class="kpi-grid">
+
+
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+
+                        <span class="kpi-icon blue">
+                            ⌖
+                        </span>
+
+                        <span class="kpi-live">
+                            LIVE
+                        </span>
+
+                    </div>
+
+                    <span class="kpi-label">
+                        MONITORED LOCATIONS
+                    </span>
+
+                    <strong id="locations">
+                        0
+                    </strong>
+
+                    <p>
+                        Active monitoring points
+                    </p>
+
+                </div>
+
+
+
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+
+                        <span class="kpi-icon green">
+                            ◒
+                        </span>
+
+                        <span class="kpi-live">
+                            DATABASE
+                        </span>
+
+                    </div>
+
+                    <span class="kpi-label">
+                        HISTORICAL EVENTS
+                    </span>
+
+                    <strong id="landslides">
+                        0
+                    </strong>
+
+                    <p>
+                        Recorded landslide events
+                    </p>
+
+                </div>
+
+
+
+                <div class="kpi-card warning-card">
+
+                    <div class="kpi-top">
+
+                        <span class="kpi-icon red">
+                            !
+                        </span>
+
+                        <span class="kpi-live red-live">
+                            ATTENTION
+                        </span>
+
+                    </div>
+
+                    <span class="kpi-label">
+                        ACTIVE ALERTS
+                    </span>
+
+                    <strong id="alerts">
+                        0
+                    </strong>
+
+                    <p>
+                        Warnings requiring attention
+                    </p>
+
+                </div>
+
+
+
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+
+                        <span class="kpi-icon purple">
+                            AI
+                        </span>
+
+                        <span class="kpi-live">
+                            MODEL
+                        </span>
+
+                    </div>
+
+                    <span class="kpi-label">
+                        MODEL CONFIDENCE
+                    </span>
+
+                    <strong>
+                        85%
+                    </strong>
+
+                    <p>
+                        Current demo model confidence
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RISK + LOCATION
+            ================================================== -->
+
+            <section id="risk" class="two-column">
+
+
+                <!-- RISK -->
+
+                <article class="panel risk-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span>
+                                AI RISK ANALYSIS
+                            </span>
+
+                            <h3>
+                                Current Risk Assessment
+                            </h3>
+
+                        </div>
+
+                        <span class="demo-tag">
+                            DEMO MODEL
+                        </span>
+
+                    </div>
+
+
+                    <div class="risk-body">
+
+
+                        <div class="risk-gauge">
+
+                            <div class="gauge-inner">
+
+                                <strong id="riskScore">
+                                    78.50
+                                </strong>
+
+                                <span>
+                                    RISK SCORE
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="risk-description">
+
+                            <div class="risk-status">
+
+                                <span class="risk-dot"></span>
+
+                                <strong id="riskLevel">
+                                    HIGH RISK
+                                </strong>
+
+                            </div>
+
+                            <h4 id="riskTitle">
+                                Elevated Landslide Risk
+                            </h4>
+
+                            <p>
+                                Environmental monitoring indicators
+                                currently show elevated susceptibility
+                                within the monitored zone.
+                            </p>
+
+
+                            <div class="confidence">
+
+                                <div class="confidence-head">
+
+                                    <span>
+                                        MODEL CONFIDENCE
+                                    </span>
+
+                                    <strong id="confidenceValue">
+                                        85%
+                                    </strong>
+
+                                </div>
+
+                                <div class="confidence-track">
+
+                                    <div id="confidenceBar"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="risk-footer">
+
+                        <div>
+
+                            <span>
+                                MODEL
+                            </span>
+
+                            <strong>
+                                demo-v1
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                STATUS
+                            </span>
+
+                            <strong class="green-text">
+                                Running
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                UPDATED
+                            </span>
+
+                            <strong id="riskUpdated">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- LOCATION -->
+
+                <article class="panel location-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span>
+                                MONITORING POINT
+                            </span>
+
+                            <h3>
+                                Location Intelligence
+                            </h3>
+
+                        </div>
+
+                        <span class="active-tag">
+                            ACTIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="location-main">
+
+                        <div class="location-pin">
+                            ⌖
+                        </div>
+
+                        <div>
+
+                            <h4 id="locationName">
+                                Loading...
+                            </h4>
+
+                            <p id="district">
+                                District: Loading...
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="location-grid">
+
+                        <div>
+
+                            <span>STATE</span>
+
+                            <strong id="state">
+                                --
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>ELEVATION</span>
+
+                            <strong id="elevation">
+                                --
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>LATITUDE</span>
+
+                            <strong id="latitude">
+                                --
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>LONGITUDE</span>
+
+                            <strong id="longitude">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="location-footer">
+
+                        <span class="location-online"></span>
+
+                        <span>
+                            Monitoring node operational
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ENVIRONMENT
+            ================================================== -->
+
+            <section id="environment" class="panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span>
+                            ENVIRONMENTAL INTELLIGENCE
+                        </span>
+
+                        <h3>
+                            Live Monitoring Indicators
+                        </h3>
+
+                    </div>
+
+                    <span class="source-tag">
+                        PostgreSQL
+                    </span>
+
+                </div>
+
+
+                <div class="environment-grid">
+
+
+                    <!-- Rainfall -->
+
+                    <div class="environment-card rainfall">
+
+                        <div class="metric-icon">
+                            🌧
+                        </div>
+
+                        <div class="metric-title">
+                            24-HOUR RAINFALL
+                        </div>
+
+                        <strong id="rainfall24">
+                            -- mm
+                        </strong>
+
+                        <p>
+                            Recent accumulated rainfall
+                        </p>
+
+                        <div class="metric-line">
+                            <div></div>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Weekly rainfall -->
+
+                    <div class="environment-card weekly">
+
+                        <div class="metric-icon">
+                            ☁
+                        </div>
+
+                        <div class="metric-title">
+                            7-DAY RAINFALL
+                        </div>
+
+                        <strong id="rainfall7">
+                            -- mm
+                        </strong>
+
+                        <p>
+                            Weekly accumulated rainfall
+                        </p>
+
+                        <div class="metric-line">
+                            <div></div>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Soil -->
+
+                    <div class="environment-card soil">
+
+                        <div class="metric-icon">
+                            💧
+                        </div>
+
+                        <div class="metric-title">
+                            SOIL MOISTURE
+                        </div>
+
+                        <strong id="soilMoisture">
+                            -- %
+                        </strong>
+
+                        <p id="soilInfo">
+                            Current soil condition
+                        </p>
+
+                        <div class="metric-line">
+                            <div id="soilBar"></div>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Slope -->
+
+                    <div class="environment-card terrain">
+
+                        <div class="metric-icon">
+                            ⛰
+                        </div>
+
+                        <div class="metric-title">
+                            TERRAIN SLOPE
+                        </div>
+
+                        <strong id="slopeValue">
+                            32.50°
+                        </strong>
+
+                        <p>
+                            Current terrain sample
+                        </p>
+
+                        <div class="metric-line">
+                            <div class="slope-bar"></div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RISK FACTOR MATRIX
+            ================================================== -->
+
+            <section class="two-column">
+
+
+                <article class="panel factor-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span>
+                                CONDITION MATRIX
+                            </span>
+
+                            <h3>
+                                Monitoring Indicators
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="factor-list">
+
+
+                        <div class="factor">
+
+                            <div class="factor-name">
+
+                                <span class="factor-symbol rain-symbol">
+                                    R
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Rainfall
+                                    </strong>
+
+                                    <small>
+                                        24-hour measurement
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                            <strong id="factorRainfall">
+                                68.20 mm
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="factor">
+
+                            <div class="factor-name">
+
+                                <span class="factor-symbol soil-symbol">
+                                    S
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Soil Moisture
+                                    </strong>
+
+                                    <small>
+                                        Latest sensor reading
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                            <strong id="factorSoil">
+                                72.50%
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="factor">
+
+                            <div class="factor-name">
+
+                                <span class="factor-symbol slope-symbol">
+                                    T
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Terrain Slope
+                                    </strong>
+
+                                    <small>
+                                        Terrain sample
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                            <strong>
+                                32.50°
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SYSTEM HEALTH -->
+
+                <article class="panel system-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span>
+                                SYSTEM HEALTH
+                            </span>
+
+                            <h3>
+                                Service Status
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="health-list">
+
+
+                        <div class="health-row">
+
+                            <span>
+                                PostgreSQL Database
+                            </span>
+
+                            <strong class="healthy">
+                                Operational
+                            </strong>
+
+                        </div>
+
+
+                        <div class="health-row">
+
+                            <span>
+                                FastAPI Backend
+                            </span>
+
+                            <strong class="healthy">
+                                Operational
+                            </strong>
+
+                        </div>
+
+
+                        <div class="health-row">
+
+                            <span>
+                                Monitoring API
+                            </span>
+
+                            <strong class="healthy">
+                                Connected
+                            </strong>
+
+                        </div>
+
+
+                        <div class="health-row">
+
+                            <span>
+                                AI Risk Engine
+                            </span>
+
+                            <strong class="demo-state">
+                                Demo Mode
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ALERTS
+            ================================================== -->
+
+            <section id="alerts" class="panel alert-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span>
+                            EARLY WARNING CENTER
+                        </span>
+
+                        <h3>
+                            Active Disaster Alerts
+                        </h3>
+
+                    </div>
+
+                    <span id="alertBadge"
+                          class="warning-tag">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="alert-command">
+
+
+                    <div class="alert-symbol">
+                        !
+                    </div>
+
+
+                    <div class="alert-main">
+
+                        <div class="alert-title-row">
+
+                            <h4 id="alertLevel">
+                                HIGH RISK
+                            </h4>
+
+                            <span id="alertTime">
+                                Loading...
+                            </span>
+
+                        </div>
+
+                        <p id="alertMessage">
+                            Loading latest alert...
+                        </p>
+
+                    </div>
+
+
+                    <div class="alert-action">
+
+                        <span>
+                            RESPONSE
+                        </span>
+
+                        <strong>
+                            MONITOR
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 GIS
+            ================================================== -->
+
+            <section id="map" class="panel map-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span>
+                            GEOSPATIAL INTELLIGENCE
+                        </span>
+
+                        <h3>
+                            Risk Monitoring Area
+                        </h3>
+
+                    </div>
+
+                    <span class="source-tag">
+                        GIS READY
+                    </span>
+
+                </div>
+
+
+                <div class="map">
+
+
+                    <div class="map-background"></div>
+
+
+                    <div class="terrain-shape shape-one"></div>
+
+                    <div class="terrain-shape shape-two"></div>
+
+                    <div class="terrain-shape shape-three"></div>
+
+
+                    <div class="map-road road-one"></div>
+
+                    <div class="map-road road-two"></div>
+
+
+                    <div class="map-marker">
+
+                        <div class="marker-pulse"></div>
+
+                        <div class="marker-dot"></div>
+
+                        <div class="marker-card">
+
+                            <strong id="mapLocation">
+                                Monitoring Point
+                            </strong>
+
+                            <span>
+                                Elevated risk zone
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="map-compass">
+
+                        <span>
+                            N
+                        </span>
+
+                    </div>
+
+
+                    <div class="map-legend">
+
+                        <div>
+
+                            <span class="legend-dot red"></span>
+
+                            High Risk
+
+                        </div>
+
+                        <div>
+
+                            <span class="legend-dot green"></span>
+
+                            Monitoring Node
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="coordinates-box">
+
+                        <span>
+                            LIVE COORDINATES
+                        </span>
+
+                        <strong id="mapCoordinates">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <footer class="footer">
+
+                <div>
+
+                    <strong>
+                        Landslide AI Risk Intelligence
+                    </strong>
+
+                    <span>
+                        Early Warning & Disaster Monitoring Platform
+                    </span>
+
+                </div>
+
+
+                <div class="footer-right">
+
+                    <span>
+                        NER MONITORING NETWORK
+                    </span>
+
+                    <strong>
+                        System Online
+                    </strong>
+
+                </div>
+
+            </footer>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div id="toast" class="toast">
+
+    <span class="toast-dot"></span>
+
+    <span id="toastMessage">
+        Dashboard connected
+    </span>
+
+</div>
+
+
+<!-- JavaScript -->
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
